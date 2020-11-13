@@ -1,7 +1,10 @@
 # builders-mine
+
 ## minecraft like game using Pyglet
+
 ### install
-```
+
+```bash
 git clone https://github.com/jdszekeres/builders-mine.git
 cd builders-mine
 pip install -r requirements.txt
