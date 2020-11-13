@@ -46,8 +46,7 @@ class Game(pyglet.window.Window):
             for block in data["world"]:
                 for pos in data["world"][block]:
                     world[tuple(pos)] = block
-            inventory = data["inventory"]
-            world["inventory"] = inventory
+             
             self.world.changeWorld(world)
 
     def saveGame(self,file):
@@ -57,8 +56,8 @@ class Game(pyglet.window.Window):
             world[block.name] = []
         for i in self.world.world:
             world[self.world.world[i]].append(i)
-        inventory = self.gameScene.inventory
-        data = {"position":self.player.position,"world":world,"inventory":inventory}
+         
+        data = {"position":self.player.position,"world":world}
         with open(file,"w") as f:
               json.dump(data,f)
 

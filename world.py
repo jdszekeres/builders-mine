@@ -112,10 +112,7 @@ class World(object):
             if i == 'position':
                 for ind in i:
                     self.add_block(ind,world[ind],immediate = False)
-            elif i == 'inventory':
-                gameScene.GameScene.inventory = world[i]
-            else:
-                pass
+
     def hill(self, n=80, count=120):
         o = n - 10
         for _ in xrange(count):

@@ -25,8 +25,7 @@ class GameScene(Screen):
         self.reticle = None
         # A list of Block.name the player can place. Hit num keys to cycle.
         self.avil = [block.name for block in placeBlocks]
-        self.inventory = {}
-        self.inv = []
+        
         # The current block the user can place. Hit num keys to cycle.
         self.block = None
         # Convenience list of num keys.
@@ -45,45 +44,19 @@ class GameScene(Screen):
             # ON OSX, control + left click = right click.
             if prePos:
                 if self.block:
-                    #print(self.inv, self.inventory)
+                    
                     self.game.world.add_block(prePos, self.block)
-                    #print(self.inv, self.inventory)
-                    self.inventory[self.block] -= 1
-                    #print(self.inv, self.inventory)
-                    if self.inventory[self.block] == 0:
-                        #print(self.inv, self.inventory)
-                        self.inventory[self.block] = None
-                        #print(self.inv, self.inventory)
-                        self.errorlabel.draw()
-                        time.sleep(5)
-                        self.errorlabel.delete()
-                else:
-                    self.errorlabel.draw()
-                    time.sleep(5)
-                    self.errorlabel.delete()
+
+                    
 
             
         elif button == pyglet.window.mouse.LEFT and curPos:
             block = self.game.world.world[curPos]
             if block in self.avil:
-                for item in block:
-                    pass
-                #print(self.inventory)
-                def indict(dicto, value):
-                    try:
-                        _ = dicto[value]
-                    except:
-                        return False
-                    else:
-                        return True
-                if indict(self.inventory, block):
-                    value = self.inventory[block] + 1
-                else:
-                    value = 1
+
                 block = self.game.world.remove_block(curPos)
-                self.inventory[block] = value
-                self.inv.append(block)
-                #print(self.inv, self.inventory)
+
+
                 
 
 
@@ -113,8 +86,8 @@ class GameScene(Screen):
         elif symbol == key.TAB:
             self.game.player.switchFlyState()
         elif symbol in self.num_keys:
-            index = (symbol - self.num_keys[0]) % len(self.inventory)
-            self.block = self.inventory[self.inv[index]]
+            index = (symbol - self.num_keys[0]) % len(self.avil)
+            self.block = self.avil[index]
             
 
     def keyRelease(self, symbol, modifiers):
@@ -171,10 +144,9 @@ class GameScene(Screen):
         """
         x, y, z = self.game.player.position
         a = []
-        for i, v in enumerate(self.inventory):
-            #print(i, v)
+        for i, v in enumerate(self.avil):
             a.append(str(i+1)+":"+v)
-        #print(self.inventory)
+        
         self.label.text = " ".join(a)
         self.label.draw()
 
