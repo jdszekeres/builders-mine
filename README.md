@@ -8,4 +8,15 @@ pip install -r requirements.txt
 python3 main.py
 ```
 ### screenshots
-will be uploaded soon
+main screen
+![main](screenshots/main.png)
+day and night switch
+![day-night](screenshots/day-night.png)
+choose game options
+![choose-game-settings](screenshots/game-choose.png)
+tree
+![tree](screenshots/tree.png)
+mining
+![mine](screenshots/stair.png)
+houses
+![house1](screenshots/house1.png)
