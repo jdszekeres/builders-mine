@@ -37,7 +37,7 @@ class Creature(object):
         self.health = health
 
     def rotate(self,x,y):
-    ##  @brie frotate the player
+    ##  @brief frotate the player
         y = max(-90, min(90, y))
         self.rotation = (x, y)
 
