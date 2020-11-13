@@ -24,3 +24,4 @@ mining
 houses
 ![house1](screenshots/house1.png)
 ![house2](screenshots/house2.png)
+
