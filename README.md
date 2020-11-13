@@ -7,3 +7,5 @@ cd builders-mine
 pip install -r requirements.txt
 python3 main.py
 ```
+### screenshots
+will be uploaded soon
