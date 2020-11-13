@@ -45,15 +45,15 @@ class GameScene(Screen):
             # ON OSX, control + left click = right click.
             if prePos:
                 if self.block:
-                    print(self.inv, self.inventory)
+                    #print(self.inv, self.inventory)
                     self.game.world.add_block(prePos, self.block)
-                    print(self.inv, self.inventory)
+                    #print(self.inv, self.inventory)
                     self.inventory[self.block] -= 1
-                    print(self.inv, self.inventory)
+                    #print(self.inv, self.inventory)
                     if self.inventory[self.block] == 0:
-                        print(self.inv, self.inventory)
+                        #print(self.inv, self.inventory)
                         self.inventory[self.block] = None
-                        print(self.inv, self.inventory)
+                        #print(self.inv, self.inventory)
                         self.errorlabel.draw()
                         time.sleep(5)
                         self.errorlabel.delete()
@@ -68,7 +68,7 @@ class GameScene(Screen):
             if block in self.avil:
                 for item in block:
                     pass
-                print(self.inventory)
+                #print(self.inventory)
                 def indict(dicto, value):
                     try:
                         _ = dicto[value]
@@ -83,7 +83,7 @@ class GameScene(Screen):
                 block = self.game.world.remove_block(curPos)
                 self.inventory[block] = value
                 self.inv.append(block)
-                print(self.inv, self.inventory)
+                #print(self.inv, self.inventory)
                 
 
 
@@ -172,9 +172,9 @@ class GameScene(Screen):
         x, y, z = self.game.player.position
         a = []
         for i, v in enumerate(self.inventory):
-            print(i, v)
+            #print(i, v)
             a.append(str(i+1)+":"+v)
-        print(self.inventory)
+        #print(self.inventory)
         self.label.text = " ".join(a)
         self.label.draw()
 
