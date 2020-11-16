@@ -1,4 +1,4 @@
-from PIL import Image
+from PIL import *
 import math,os
 
 def MergePicture(width,height,pictures,folder, savePath):
@@ -17,3 +17,15 @@ def MergePicture(width,height,pictures,folder, savePath):
         toImage.paste(img, loc)
 
     toImage.save(os.path.join(folder,savePath), quality=95)
+def path_resize(folder):
+    ## @brief resize all images in a folder
+    f = folder
+    for file in os.listdir(f):
+        
+        f_img = f+"/"+file
+        try:
+            img = Image.open(f_img)
+            img = img.resize((128, 128))
+            img.save(f_img)
+        except:
+            pass
