@@ -10,7 +10,9 @@ cd builders-mine
 pip install -r requirements.txt
 python3 main.py
 ```
+
 ### screenshots
+
 main screen
 ![main](screenshots/main.png)
 day and night switch
@@ -27,4 +29,5 @@ houses
 
 ### known issues
 
-* player will kepp moving after key release
+- [ ] player will keep moving after key release
+- [ ] cannot build somenthing because of 1st issue
