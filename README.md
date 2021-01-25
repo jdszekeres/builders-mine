@@ -24,6 +24,11 @@ to load the game from the server choose
 ```plain
 start Game>Load Game>local server
 ```
+if you reccive a urllib error it is because you server is not on or working run it with
+```bash
+python server.py
+```
+
 it will not load if [localhost:500](https://127.0.0.1:5000)
 
 ### screenshots
