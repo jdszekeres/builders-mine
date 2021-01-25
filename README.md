@@ -24,7 +24,11 @@ to load the game from the server choose
 ```plain
 start Game>Load Game>local server
 ```
-if you reccive a urllib error it is because you server is not on or working run it with
+if you reccive a urllib error
+```python
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=5000): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fbcafa72370>: Failed to establish a new connection: [Errno 61] Connection refused'))
+```
+ it is because you server is not on or working run it with
 ```bash
 python server.py
 ```
