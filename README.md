@@ -25,3 +25,12 @@ to load the game from the server choose
 start Game>Load Game>local server
 ```
 it will not load if [localhost:500](https://127.0.0.1:5000)
+
+### screenshots
+![](screenshots/tree.png)
+![](screenshots/stair.png)
+![](screenshots/house1.png)
+![](screenshots/house2.png)
+![](screenshots/main.png)
+![](screenshots/game-choose.png)
+![](screenshots/day-night.png)
