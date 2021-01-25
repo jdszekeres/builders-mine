@@ -27,7 +27,7 @@ class World(object):
 
         # Mapping from position to a pyglet `VertextList` for all shown blocks.
         self._shown = {}
-
+ 
         # Mapping from sector to a list of positions inside that sector.
         self.sectors = {}
         self.sectorSize = sectorSize
@@ -104,14 +104,13 @@ class World(object):
                 The dictionary that store the the block type for each positions
 
         """
-       
         for i in world.keys():
-            
-            
-            
-            if i == 'position':
-                for ind in i:
-                    self.add_block(ind,world[ind],immediate = False)
+            self.add_block(i, world[i], immediate=False)
+        #del world["position"]
+        #self.world = world
+        # for i in world.keys():
+        #         for ind in i:
+        #             self.add_block(ind,world[ind],immediate = True)
 
     def hill(self, n=80, count=120):
         o = n - 10
@@ -155,8 +154,17 @@ class World(object):
                 l(a+1, h, b)
                 #top of tree
                 self.add_block((a, h+1, b), LEAVES.name, immediate=False)
-
-    def setupWorld(self):
+    def cave(self, x, y, z):
+        """cut out a cave fro x,y,z coords"""
+        db = self.remove_block
+        def dellayer(zl):
+            db((x, y, zl))
+            db((x+1, y+1, zl))
+            db((x+1, y, zl))
+            db((x, y+1, zl))
+        for i in range(z, z-4, -1):
+            dellayer(i)
+    def setupWorld(self, player):
         """ Initialize the world by placing all the blocks.
         """
         n = 100  # 1/2 width and height of world
@@ -166,7 +174,9 @@ class World(object):
             for z in xrange(-n, n + 1, s):
                 # create a layer MARBLE.coordinates an GRASS.coordinates everywhere.
                 self.add_block((x, y - 2, z), GRASS.name, immediate=False)
-                for i in xrange(3, self.untilbedrock):
+                for i in xrange(3, 10):
+                    self.add_block((x, y - i, z), DIRT.name, immediate=False)
+                for i in xrange(10, self.untilbedrock):
                     self.add_block((x, y - i, z), STONE.name, immediate=False)
                 self.add_block((x, y - self.untilbedrock, z), MARBLE.name, immediate=False)
                 if x in (-n, n) or z in (-n, n):
@@ -177,6 +187,9 @@ class World(object):
         # generate the hills randomly
         self.hill(n)
         self.tree()
+        x,y,z = player.position
+        print(x,y,z)
+        # self.cave(x,y-1,z)
     def collide(self, position, creature):
         """ Checks to see if the player at the given `position` and `height`
         is colliding with any blocks in the world.

@@ -18,7 +18,9 @@ class GameScene(Screen):
         self.label = pyglet.text.Label('', font_name='Arial', font_size=18,
             x=10, y=self.game.height - (self.game.height-20), anchor_x='left', anchor_y='top',
             color=(255,255,255, 255))
-        self.pressable = True
+        self.errorlabel = pyglet.text.Label('you must mine blocks before you place them', font_name='Arial', font_size=18,
+            x=10, y=self.game.height - 10, anchor_x='left', anchor_y='top',
+            color=(255,0,0, 255))
         ##Initialize crosshairs and add it to the batch
         self.reticle = None
         # A list of Block.name the player can place. Hit num keys to cycle.
@@ -67,20 +69,16 @@ class GameScene(Screen):
         self.game.player.rotate(x,y)
 
     def keyPressed(self, symbol, modifiers):
-        if self.pressable == True:
-            """called when player press any key"""
-            if symbol == key.UP:
-                self.game.player.move("FORWARD")
-            elif symbol == key.DOWN:
-                self.game.player.move("BACKWARD")
-            elif symbol == key.LEFT:
-                self.game.player.move("LEFT")
-            elif symbol == key.RIGHT:
-                self.game.player.move("RIGHT")
-            self.pressable = False
-
-        
-        if symbol == key.SPACE:
+        """called when player press any key"""
+        if symbol == key.UP:
+            self.game.player.move("FORWARD")
+        elif symbol == key.DOWN:
+            self.game.player.move("BACKWARD")
+        elif symbol == key.LEFT:
+            self.game.player.move("LEFT")
+        elif symbol == key.RIGHT:
+            self.game.player.move("RIGHT")
+        elif symbol == key.SPACE:
             if self.game.player.dy == 0:
                 self.game.player.jump(self.game.world.gravity)
         elif symbol == key.ESCAPE:
@@ -90,11 +88,9 @@ class GameScene(Screen):
         elif symbol in self.num_keys:
             index = (symbol - self.num_keys[0]) % len(self.avil)
             self.block = self.avil[index]
-        
             
 
     def keyRelease(self, symbol, modifiers):
-        
         """called when player release any key"""
         if symbol == key.UP:
             self.game.player.stopMove("FORWARD")
@@ -104,7 +100,6 @@ class GameScene(Screen):
             self.game.player.stopMove("LEFT")
         elif symbol == key.RIGHT:
             self.game.player.stopMove("RIGHT")
-        self.pressable = True
 
 
     def screenResize(self, width, height):

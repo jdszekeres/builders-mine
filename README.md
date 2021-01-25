@@ -11,23 +11,17 @@ pip install -r requirements.txt
 python3 main.py
 ```
 
-### screenshots
+### server
 
-main screen
-![main](screenshots/main.png)
-day and night switch
-![day-night](screenshots/day-night.png)
-choose game options
-![choose-game-settings](screenshots/game-choose.png)
-tree
-![tree](screenshots/tree.png)
-mining
-![mine](screenshots/stair.png)
-houses
-![house1](screenshots/house1.png)
-![house2](screenshots/house2.png)
+builders mine also has a server to lighten the load on your computer. To host the server instance you need to run server.py with Flask installed
 
-### known issues
+```bash
+pip install Flask
+```
 
-- [ ] player will keep moving after key release
-- [ ] cannot build somenthing because of 1st issue
+to load the game from the server choose
+
+```plain
+start Game>Load Game>local server
+```
+it will not load if [localhost:500](https://127.0.0.1:5000)

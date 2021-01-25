@@ -19,6 +19,7 @@ class MainScene(Screen):
             "stage3":[
                 ("Game one",[(self.game.loadGame,("game1.json",)),(self.game.changeScene,("game",))]),
                 ("Game two",[(self.game.loadGame,("game2.json",)),(self.game.changeScene,("game",))]),
+                ("local server", [(self.game.loadGameServer,("http://127.0.0.1:5000",)),(self.game.changeScene,("game",))]),
                 ("Return",[(self.changeStage,("stage2",))]),
             ],
         

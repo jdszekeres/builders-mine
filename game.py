@@ -40,13 +40,26 @@ class Game(pyglet.window.Window):
         if not os.path.exists(file):
             raise ValueError("The file cannot be found on the given path")
         with open(file, 'r') as f:
+            print(file[0:100])
             data = json.load(f)
+            print(type(data))
             self.player.position = data["position"]
             world = {}
             for block in data["world"]:
                 for pos in data["world"][block]:
                     world[tuple(pos)] = block
-             
+            self.world.changeWorld(world)
+    def loadGameServer(self,adress):
+        import requests
+        f = requests.get(adress).content
+        data = json.loads(f.decode('utf-8'))
+        print("got content")
+        self.player.position = data["position"]
+        world = {}
+        print("set pos")
+        for block in data["world"]:
+            for pos in data["world"][block]:
+                world[tuple(pos)] = block
             self.world.changeWorld(world)
 
     def saveGame(self,file):
@@ -71,7 +84,7 @@ class Game(pyglet.window.Window):
     ##  @brief clear the current game state and start a new game
         self.player.position = (0,0,0)
         self.world.clearWorld()
-        self.world.setupWorld()
+        self.world.setupWorld(self.player)
         self.changeScene("game")
 
     def changeScene(self,scene):
