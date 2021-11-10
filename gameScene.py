@@ -121,6 +121,7 @@ class GameScene(Screen):
         self.game.world.updateWorld(1.0/self.game.refreshRate,self.game.player)
         m = 8
         dt = min(dt, 0.2)
+        print(self.game.player.position)
         for _ in xrange(m):
             self.game.player.update(dt/m,self.game.world)
 

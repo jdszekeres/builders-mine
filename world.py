@@ -86,7 +86,10 @@ class World(object):
             if self.sector is None:
                 self.processQueue.process_entire_queue()
             self.sector = sector
-
+            print(player.position[1])
+        # if player.position[1] <= 40:
+        #     print('dead')
+        #     player.position = (0, 0, 0)
     def clearWorld(self):
         """Clear the world"""
         self.batch = pyglet.graphics.Batch()
