@@ -40,7 +40,7 @@ class Game(pyglet.window.Window):
         if not os.path.exists(file):
             raise ValueError("The file cannot be found on the given path")
         with open(file, 'r') as f:
-            print(file[0:100])
+
             data = json.load(f)
             print(type(data))
             self.player.position = data["position"]

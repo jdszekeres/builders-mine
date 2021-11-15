@@ -1,8 +1,8 @@
 import sys,time
 
 from pyglet.gl import *
-from pyglet.window import key, mouse
-
+from pyglet.window import *
+import pyglet
 from screen import Screen
 from loadSource import *
 from shape import Shape3D
@@ -121,7 +121,10 @@ class GameScene(Screen):
         self.game.world.updateWorld(1.0/self.game.refreshRate,self.game.player)
         m = 8
         dt = min(dt, 0.2)
-        print(self.game.player.position)
+       
+        if self.game.player.position[1] <= -45:
+            #void
+            self.game.player.position = self.game.player.spawn
         for _ in xrange(m):
             self.game.player.update(dt/m,self.game.world)
 
